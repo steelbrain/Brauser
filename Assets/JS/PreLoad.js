@@ -6,6 +6,6 @@
   v8.setFlagsFromString('--harmony_tostring');
   v8 = null;
   document.addEventListener('DOMContentLoaded', function(){
-    window.Main = new Renderer;
+    new Renderer;
   });
 })();
