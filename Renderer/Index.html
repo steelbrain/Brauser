@@ -3,19 +3,41 @@
   <head lang="en">
     <meta charset="UTF-8">
     <title>Browser</title>
+    <link rel="import" href="../Assets/Bower/paper-button/paper-button.html">
+    <link rel="import" href="../Assets/Bower/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="../Assets/Bower/paper-tabs/paper-tabs.html">
+    <link rel="import" href="../Assets/Bower/paper-input/paper-input.html">
+    <link rel="stylesheet" href="../Assets/Styles/Base.css">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no">
   </head>
-  <body>
-    Renderer
-    <script>
-      var v8 = require('v8');
-      v8.setFlagsFromString('--harmony_classes');
-      v8.setFlagsFromString('--harmony_object_literals');
-      v8.setFlagsFromString('--harmony_tostring');
-      v8 = null;
-      document.addEventListener('DOMContentLoaded', function(){
-        window.Main = new Renderer;
-      });
-    </script>
-    <script src="Assets/Main.js"></script>
+  <body fullbleed>
+    <!-- <Tab Bar> -->
+    <div layout horizontal flex>
+      <div layout horizontal id="Header-TabBar" class="bg-colored">
+        <paper-tabs id="Header-Left-Tabs">
+          <paper-tab><paper-icon-button icon="add"></paper-icon-button></paper-tab>
+        </paper-tabs>
+        <!--<span flex></span>-->
+      </div>
+      <div flex>
+        <paper-icon-button icon="remove"></paper-icon-button>
+        <paper-icon-button icon="tab"></paper-icon-button>
+        <paper-icon-button icon="close"></paper-icon-button>
+      </div>
+    </div>
+    <!-- </Tab Bar> -->
+    <!-- <URL Bar> -->
+    <div layout horizontal flex>
+      <paper-icon-button icon="arrow-back"></paper-icon-button>
+      <paper-icon-button icon="arrow-forward"></paper-icon-button>
+      <paper-icon-button icon="refresh"></paper-icon-button>
+      <input type="text" placeholder="Enter URL or Term here" flex>
+      <paper-icon-button icon="apps"></paper-icon-button>
+    </div>
+    <!-- </URL Bar> -->
+
+    <script>var $ = document.querySelector.bind(document);</script>
+    <script src="../Assets/JS/PreLoad.js"></script>
+    <script src="../Assets/JS/Main.js"></script>
   </body>
 </html>
