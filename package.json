@@ -1,0 +1,5 @@
+{
+  "name"    : "Browser",
+  "version" : "0.0.1",
+  "main"    : "Browser/Starter.js"
+}
