@@ -5,7 +5,8 @@
 var
   App = require('app'),
   BrowserWindow = require('browser-window'),
-  Path = require('path');
+  Path = require('path'),
+  FS = require('fs');
 
 require('crash-reporter').start();
 
@@ -24,7 +25,11 @@ class Main{
     this.BrowserWindow = null;
   }
   Ready(){
-    this.BrowserWindow = new BrowserWindow({width: 800, height: 600});
+    this.BrowserWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      icon: FS.realpathSync(__dirname + '/../Assets/Images/icon32.png')
+    });
     this.BrowserWindow.loadUrl('file://' + __dirname + '/../Renderer/Index.html');
   }
   WindowsClosed(){
