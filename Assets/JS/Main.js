@@ -3,14 +3,25 @@
 "use strict";
 class Renderer{
   constructor(){
-    document.addEventListener('keydown', this.DocumentKey.bind(this));
-    this.Tabs = $("#Header-Left-Tabs");
+    window.Main = this;
+    this.Remote = require('remote');
+    this.BrowserWindow = this.Remote.getCurrentWindow();
+
+    this.TaskBar = new TaskBar();
+    this.URLBar = new URLBar();
+    this.Tabs = new Tabs();
+
+    this.Initialize();
+    this.URLBar.Initialize();
   }
-  DocumentKey(e){
-    if(e.ctrlKey){
-      if(e.altKey && e.which === 82){
-        location.reload();
+  Initialize(){
+    document.addEventListener('keydown', function(e){
+      if(e.ctrlKey){
+        if(e.altKey && e.which === 82){
+          location.reload();
+        }
       }
-    }
+    });
+    this.Tabs.CreateNew('https://www.google.com', true);
   }
 }
