@@ -1,0 +1,21 @@
+{
+  "name": "Browser",
+  "version": "0.0.1",
+  "homepage": "https://github.com/steelbrain/Browser",
+  "authors": [
+    "steelbrain <aneesiqbalbhatti@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Assets/Bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-icon-button": "polymer/paper-icon-button#~0.5.5",
+    "paper-button": "polymer/paper-button#~0.5.5"
+  }
+}
