@@ -28,9 +28,15 @@ class Main{
     this.BrowserWindow = new BrowserWindow({
       width: 800,
       height: 600,
-      icon: FS.realpathSync(__dirname + '/../Assets/Images/icon32.png')
+      icon: FS.realpathSync(__dirname + '/../Assets/Images/icon32.png'),
+      frame: false,
+      center: true
     });
     this.BrowserWindow.loadUrl('file://' + __dirname + '/../Renderer/Index.html');
+    if(process.argv.indexOf('--dev')){
+      this.BrowserWindow.toggleDevTools();
+    }
+    this.BrowserWindow.maximize();
   }
   WindowsClosed(){
 
