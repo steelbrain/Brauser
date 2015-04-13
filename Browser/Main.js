@@ -39,7 +39,7 @@ class Main{
     this.BrowserWindow.maximize();
   }
   WindowsClosed(){
-
+    App.quit();
   }
 }
 
