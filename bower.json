@@ -16,6 +16,8 @@
   ],
   "dependencies": {
     "paper-icon-button": "polymer/paper-icon-button#~0.5.5",
-    "paper-button": "polymer/paper-button#~0.5.5"
+    "paper-button": "polymer/paper-button#~0.5.5",
+    "paper-tabs": "Polymer/paper-tabs#~0.5.5",
+    "paper-input": "Polymer/paper-input#~0.5.5"
   }
 }
