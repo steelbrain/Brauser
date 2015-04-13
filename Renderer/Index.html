@@ -14,12 +14,12 @@
     <!-- <Tab Bar> -->
     <div layout horizontal flex>
       <div layout horizontal id="Header-TabBar" class="bg-colored">
-        <paper-tabs id="Header-Left-Tabs">
+        <paper-tabs>
           <paper-tab><paper-icon-button icon="add"></paper-icon-button></paper-tab>
         </paper-tabs>
-        <!--<span flex></span>-->
+        <span flex></span>
       </div>
-      <div flex>
+      <div flex data-role="TaskButtons">
         <paper-icon-button icon="remove"></paper-icon-button>
         <paper-icon-button icon="tab"></paper-icon-button>
         <paper-icon-button icon="close"></paper-icon-button>
@@ -27,7 +27,7 @@
     </div>
     <!-- </Tab Bar> -->
     <!-- <URL Bar> -->
-    <div layout horizontal flex>
+    <div layout horizontal flex data-role="URLBar">
       <paper-icon-button icon="arrow-back"></paper-icon-button>
       <paper-icon-button icon="arrow-forward"></paper-icon-button>
       <paper-icon-button icon="refresh"></paper-icon-button>
@@ -39,5 +39,7 @@
     <script>var $ = document.querySelector.bind(document);</script>
     <script src="../Assets/JS/PreLoad.js"></script>
     <script src="../Assets/JS/Main.js"></script>
+    <script src="../Assets/JS/TaskBar.js"></script>
+    <script src="../Assets/JS/URLBar.js"></script>
   </body>
 </html>
