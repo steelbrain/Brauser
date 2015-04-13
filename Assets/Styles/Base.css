@@ -1,0 +1,28 @@
+body /deep/ .bg-colored{
+  background-color: #4285f4;
+  color: white;
+}
+body /deep/ core-icon, body /deep/ paper-icon-button{
+  width: 18px !important;
+  height: 18px !important;
+}
+body /deep/ paper-tabs{
+  height: 34px !important;
+}
+body /deep/ .colored{
+  color: #4285f4;
+}
+#Header-TabBar{
+  height: 34px;
+  width: calc(100% - 120px)
+}
+#Header-TabBar > span{
+  -webkit-app-region: drag;
+}
+input[type=text]{
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  padding: 2px 6px;
+  height: 26px;
+  font-size: 13px;
+}
