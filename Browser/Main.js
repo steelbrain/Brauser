@@ -33,7 +33,7 @@ class Main{
       center: true
     });
     this.BrowserWindow.loadUrl('file://' + __dirname + '/../Renderer/Index.html');
-    if(process.argv.indexOf('--dev')){
+    if(process.argv.indexOf('--dev') !== -1){
       this.BrowserWindow.toggleDevTools();
     }
     this.BrowserWindow.maximize();
