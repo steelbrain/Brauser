@@ -8,8 +8,6 @@ var
   Path = require('path'),
   FS = require('fs');
 
-require('crash-reporter').start();
-
 class Main{
   constructor(){
     App.on('window-all-closed', this.WindowsClosed.bind(this));
