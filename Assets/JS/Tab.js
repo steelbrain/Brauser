@@ -13,13 +13,26 @@ class Tab{
     this.Tab.appendChild(Icon);
     this.Tab.appendChild(Title);
 
-    this.WebView.addEventListener('page-title-set', function(Event){
-      Title.textContent = Event.title || 'New Tab';
-    });
-
     Main.TaskBar.Tabs.insertBefore(this.Tab, Main.TaskBar.Tabs.querySelector('paper-tab:last-child'));
     Main.Tabs.Root.appendChild(this.WebView);
 
     this.WebView.setAttribute('src', URL);
+
+    this.WebView.addEventListener('page-title-set', function(Event){
+      Title.textContent = Event.title || 'New Tab';
+    });
+
+    this.WebView.addEventListener('did-stop-loading', this.OnURLUpdate.bind(this));
+    this.WebView.addEventListener('did-get-response-details', this.OnURLUpdate.bind(this));
+    this.WebView.addEventListener('did-get-redirect-request', function(Event){
+      if(Event.isMainFrame)
+        this.OnURLUpdate();
+    }.bind(this));
+  }
+  OnURLUpdate(){
+    if(Main.Tabs.Active !== this){
+      return ;
+    }
+    Main.URLBar.URL.value = this.WebView.getUrl();
   }
 }
