@@ -22,6 +22,6 @@ class Renderer{
         }
       }
     });
-    this.Tabs.CreateNew('https://www.google.com', true);
+    this.Tabs.CreateNew('https://www.google.com.au', true);
   }
 }
