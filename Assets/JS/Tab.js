@@ -22,8 +22,8 @@ class Tab{
       Title.textContent = Event.title || 'New Tab';
     });
 
+    this.WebView.addEventListener('did-start-loading', this.OnURLUpdate.bind(this));
     this.WebView.addEventListener('did-stop-loading', this.OnURLUpdate.bind(this));
-    this.WebView.addEventListener('did-get-response-details', this.OnURLUpdate.bind(this));
     this.WebView.addEventListener('did-get-redirect-request', function(Event){
       if(Event.isMainFrame)
         this.OnURLUpdate();
