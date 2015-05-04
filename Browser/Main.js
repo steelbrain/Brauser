@@ -10,15 +10,13 @@ var
 
 class Main{
   constructor(){
+    process.name = 'Brauser';
     App.on('window-all-closed', this.WindowsClosed.bind(this));
     App.on('ready', this.Ready.bind(this));
 
     App.setName("Browser");
     App.setPath('userData', Path.join(App.getPath('appData'), App.getName()));
     App.setPath('userCache', Path.join(App.getPath('cache'), App.getName()));
-    App.commandLine.appendSwitch('js-flags', '--harmony_classes');
-    App.commandLine.appendSwitch('js-flags', '--harmony_object_literals');
-    App.commandLine.appendSwitch('js-flags', '--harmony_tostring');
 
     this.BrowserWindow = null;
   }
