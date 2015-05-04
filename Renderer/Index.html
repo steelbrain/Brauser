@@ -39,8 +39,13 @@
 
     <div data-role="Content"></div>
 
-    <script>var $ = document.querySelector.bind(document);</script>
-    <script src="../Assets/JS/PreLoad.js"></script>
+    <script>
+      var $ = document.querySelector.bind(document);
+      var EventEmitter = require('events').EventEmitter;
+      document.addEventListener('DOMContentLoaded', function(){
+        new Renderer;
+      });
+    </script>
     <script src="../Assets/JS/Main.js"></script>
     <script src="../Assets/JS/TaskBar.js"></script>
     <script src="../Assets/JS/URLBar.js"></script>
