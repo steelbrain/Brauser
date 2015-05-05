@@ -13,33 +13,25 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no">
   </head>
   <body fullbleed>
-    <!-- <Tab Bar> -->
-    <div layout horizontal flex>
-      <div layout horizontal id="Header-TabBar" class="bg-colored">
-        <paper-tabs>
-          <paper-tab><paper-icon-button icon="add"></paper-icon-button></paper-tab>
-        </paper-tabs>
-        <span flex></span>
-      </div>
-      <div flex data-role="TaskButtons">
+    <div layout horizontal>
+      <paper-tabs flex id="Header-Tabs-Root" scrollable>
+        <paper-tab>+</paper-tab>
+      </paper-tabs>
+      <span flex></span>
+      <div id="Header-Task-Buttons">
         <paper-icon-button icon="remove"></paper-icon-button>
         <paper-icon-button icon="tab"></paper-icon-button>
         <paper-icon-button icon="close"></paper-icon-button>
       </div>
     </div>
-    <!-- </Tab Bar> -->
-    <!-- <URL Bar> -->
-    <div layout horizontal flex data-role="URLBar">
+    <div flex>
       <paper-icon-button icon="arrow-back"></paper-icon-button>
       <paper-icon-button icon="arrow-forward"></paper-icon-button>
       <paper-icon-button icon="refresh"></paper-icon-button>
-      <input type="text" placeholder="Enter URL or Term here" flex>
-      <paper-icon-button icon="apps"></paper-icon-button>
     </div>
-    <!-- </URL Bar> -->
+    <div id="Content">
 
-    <div data-role="Content"></div>
-
+    </div>
     <script>
       var $ = document.querySelector.bind(document);
       var EventEmitter = require('events').EventEmitter;
@@ -49,7 +41,6 @@
     </script>
     <script src="../Assets/JS/Main.js"></script>
     <script src="../Assets/JS/TaskBar.js"></script>
-    <script src="../Assets/JS/URLBar.js"></script>
     <script src="../Assets/JS/Tabs.js"></script>
     <script src="../Assets/JS/Tab.js"></script>
   </body>

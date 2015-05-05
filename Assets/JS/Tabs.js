@@ -5,7 +5,7 @@ class Tabs{
   constructor(){
     this.Active = null;
     this.Tabs = [];
-    this.Root = $("div[data-role=Content]");
+    this.Root = $("#Content");
   }
   CreateNew(Link, IsSelected){
     let TheTab = new Tab(Link);

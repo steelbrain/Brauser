@@ -25,6 +25,8 @@ class Tab extends EventEmitter{
     this.WebView = WebView;
 
     Title.textContent = 'New Tab';
+    Title.classList.add('tab-title');
+    Icon.classList.add('tab-icon');
 
     this.Tab.appendChild(Icon);
     this.Tab.appendChild(Title);
@@ -36,9 +38,9 @@ class Tab extends EventEmitter{
     this.on('Navigation:Status', function(Status){
       LastStatus = Status;
       if(Status === NavStatus.START || Status === NavStatus.REDIRECT){
-        Icon.innerHTML = '<paper-spinner class="blue backward" active></paper-spinner>';
+        Icon.innerHTML = '<paper-spinner class="request backward" active></paper-spinner>';
       } else if(Status === NavStatus.RECEIVING){
-        Icon.innerHTML = '<paper-spinner class="blue" active></paper-spinner>';
+        Icon.innerHTML = '<paper-spinner class="yellow" active></paper-spinner>';
       } else if(Status === NavStatus.STOP || Status === NavStatus.FAIL){
         if(WebView.getUrl() === LastURL && LastFavicon.length){
           this.emit('Favicon:Render');
@@ -48,7 +50,7 @@ class Tab extends EventEmitter{
       }
     });
     this.on('Favicon:Render', function(){
-      Icon.innerHTML = `<img src="${LastFavicon}" />`;
+      Icon.innerHTML = `<img class="tab-img" src="${LastFavicon}" />`;
     });
     this.on('Favicon:Update', function(URL){
       LastURL = WebView.getUrl();
@@ -57,19 +59,15 @@ class Tab extends EventEmitter{
         this.emit('Favicon:Render');
       }
     });
-    this.on('Title:Update', function(TitleValue){
-      if(WebView.getUrl() === 'about:blank'){
-        Title.textContent = 'New Tab';
-      } else {
-        Title.textContent = TitleValue;
-      }
+    this.on('Title:Update', function(TitleVal){
+      Title.textContent = TitleVal;
     });
 
     // WebView Events
     this.emit('Navigation:Status', NavStatus.START);
     this.WebView.setAttribute('src', URL);
     this.WebView.addEventListener('page-title-set', function(Event){
-      Emit('Title:Update', Event.title);
+      Emit('Title:Update', WebView.getUrl() === 'about:blank' ? 'New Tab' : Event.title);
     });
     this.WebView.addEventListener('did-start-loading', function(){
       Expecting = true;
