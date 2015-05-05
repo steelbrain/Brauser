@@ -10,6 +10,9 @@ body {
   width: 24px;
   height: 24px;
 }
+paper-tab {
+  max-width: 400px;
+}
 paper-tabs /deep/ div.scroll-button{
   display: none;
 }
