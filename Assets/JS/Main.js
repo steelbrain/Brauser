@@ -11,9 +11,15 @@ class Renderer{
     this.Tabs = new Tabs();
 
     document.addEventListener('keydown', function(e){
-      if(e.ctrlKey){
-        if(e.altKey && e.which === 82){
-          location.reload();
+      if(e.which === 82 && e.ctrlKey && e.altKey){ // CTRL + ALT + R
+        location.reload();
+      } else if((e.which === 73 && e.ctrlKey && e.shiftKey) || e.which === 123){ // F12 OR CTRL + SHIFT + I
+        if(Main.Tabs.Active){
+          if(Main.Tabs.Active.WebView.isDevToolsOpened()){
+            Main.Tabs.Active.WebView.closeDevTools();
+          } else {
+            Main.Tabs.Active.WebView.openDevTools();
+          }
         }
       }
     });
