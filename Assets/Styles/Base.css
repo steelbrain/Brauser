@@ -17,7 +17,16 @@ paper-tabs /deep/ div.scroll-button{
   display: none;
 }
 #Content {
-  height: calc(100% - 91px);
+  height: calc(100% - 88px);
+}
+#Header-Omnibox{
+  margin: 2px;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+}
+#Header-Omnibox:focus{
+  outline: none;
 }
 webview.show{
   display: block;
