@@ -1,38 +1,20 @@
 body {
-  font-family: "Open Sans";
-}
-body /deep/ .bg-colored{
-  background-color: #4285f4;
+  background-color: #1094F6;
   color: white;
+  font-family: "Ubuntu";
 }
-body /deep/ core-icon, body /deep/ paper-icon-button{
-  width: 18px !important;
-  height: 18px !important;
+.tab-title{
+  padding-left: 2px;
 }
-body paper-tabs{
-  height: 34px !important;
-  width: 100%;
+.tab-icon > *{
+  width: 24px;
+  height: 24px;
 }
-body /deep/ .colored{
-  color: #4285f4;
+paper-tabs /deep/ div.scroll-button{
+  display: none;
 }
-#Header-TabBar{
-  height: 34px;
-  width: calc(100% - 120px)
-}
-#Header-TabBar > span{
-  -webkit-app-region: drag;
-}
-input[type=text]{
-  border: 1px solid #E0E0E0;
-  border-radius: 4px;
-  padding: 2px 6px;
-  height: 26px;
-  font-size: 13px;
-}
-div[data-role=Content]{
-  width: 100%;
-  height: calc(100% - 75px);
+#Content {
+  height: calc(100% - 91px);
 }
 webview.show{
   display: block;
@@ -44,4 +26,10 @@ webview{
 }
 paper-spinner.backward{
   -webkit-transform: scaleX(-1);
+}
+paper-spinner.request::shadow .circle {
+  border-color: #C8C8C8;
+}
+paper-spinner.yellow::shadow .circle {
+  border-color: #f4b400;
 }

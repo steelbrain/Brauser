@@ -8,13 +8,8 @@ class Renderer{
     this.BrowserWindow = this.Remote.getCurrentWindow();
 
     this.TaskBar = new TaskBar();
-    this.URLBar = new URLBar();
     this.Tabs = new Tabs();
 
-    this.Initialize();
-    this.URLBar.Initialize();
-  }
-  Initialize(){
     document.addEventListener('keydown', function(e){
       if(e.ctrlKey){
         if(e.altKey && e.which === 82){
@@ -22,6 +17,7 @@ class Renderer{
         }
       }
     });
+
     this.Tabs.CreateNew('https://www.google.com.au', true);
   }
 }

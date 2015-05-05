@@ -3,9 +3,9 @@
 "use strict";
 class TaskBar{
   constructor(){
-    this.Tabs = $("#Header-TabBar").querySelector('paper-tabs');
+    this.Tabs = $("#Header-Tabs-Root");
     // For some reasons adding docs to stuff make them look a bit less ugly
-    let Root = $("div[data-role=TaskButtons]");
+    let Root = $("#Header-Task-Buttons");
     Root.querySelector("paper-icon-button[icon=remove]").addEventListener('click', function(){
       Main.BrowserWindow.minimize();
     });

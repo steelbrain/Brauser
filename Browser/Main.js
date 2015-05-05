@@ -14,7 +14,7 @@ class Main{
     App.on('window-all-closed', this.WindowsClosed.bind(this));
     App.on('ready', this.Ready.bind(this));
 
-    App.setName("Browser");
+    App.setName("Brauser");
     App.setPath('userData', Path.join(App.getPath('appData'), App.getName()));
     App.setPath('userCache', Path.join(App.getPath('cache'), App.getName()));
 
