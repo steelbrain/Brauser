@@ -36,7 +36,7 @@ class Tab extends EventEmitter{
 
     // Subscribing on own events
     this.on('Navigation:Status', function(Status){
-      LastStatus = Status;
+      this.Status = LastStatus = Status;
       if(Status === NavStatus.START || Status === NavStatus.REDIRECT){
         Icon.innerHTML = '<paper-spinner class="request backward" active></paper-spinner>';
       } else if(Status === NavStatus.RECEIVING){
@@ -55,6 +55,7 @@ class Tab extends EventEmitter{
     this.on('Favicon:Update', function(URL){
       LastURL = WebView.getUrl();
       LastFavicon = URL;
+      this.Favicon = URL;
       if(LastStatus === NavStatus.STOP){
         this.emit('Favicon:Render');
       }
@@ -67,11 +68,17 @@ class Tab extends EventEmitter{
     this.emit('Navigation:Status', NavStatus.START);
     this.WebView.setAttribute('src', URL);
     this.WebView.addEventListener('page-title-set', function(Event){
-      Emit('Title:Update', WebView.getUrl() === 'about:blank' ? 'New Tab' : Event.title);
+      Emit('Title:Update', this.getUrl() === 'about:blank' ? 'New Tab' : Event.title);
     });
     this.WebView.addEventListener('did-start-loading', function(){
       Expecting = true;
+      Emit('URL:Update', this.getUrl());
       Emit('Navigation:Status', NavStatus.START);
+    });
+    this.WebView.addEventListener('did-get-redirect-request', function(e){
+      if(e.isMainFrame){
+        Emit('URL:Update', e.newUrl);
+      }
     });
     this.WebView.addEventListener('did-stop-loading', function(){
       Expecting = false;
@@ -83,11 +90,39 @@ class Tab extends EventEmitter{
     this.WebView.addEventListener('page-favicon-updated', function(Event){
       Emit('Favicon:Update', Event.favicons[0]);
     });
-    this.WebView.addEventListener('did-get-response-details', function(){
+    this.WebView.addEventListener('did-get-response-details', function(e){
       if(!Expecting) return ;
       Expecting = false;
       if(LastStatus !== NavStatus.STOP){
+        Emit('URL:Update', e.newUrl);
         Emit('Navigation:Status', NavStatus.RECEIVING);
+      }
+    });
+
+    // Listen on extra high-level events
+    this.Listen();
+  }
+  Listen(){
+    let OldURL = null;
+    this.on('URL:Update', function(URL){
+      if(this !== Main.Tabs.Active) return void(OldURL = URL);
+      if(Main.URLBar.URL.matches(':focus')){
+        if(OldURL === Main.URLBar.URL){
+          Main.URLBar.URL.value = URL;
+        }
+      } else {
+        Main.URLBar.URL.value = URL;
+        OldURL = URL;
+      }
+    });
+    this.on('Navigation:Status', function(Status){
+      if(this !== Main.Tabs.Active) return ;
+      Main.URLBar.Back.disabled = !this.WebView.canGoBack();
+      Main.URLBar.Forward.disabled = !this.WebView.canGoForward();
+      if(Status === NavStatus.STOP){
+        Main.URLBar.RefreshStop.icon = 'refresh';
+      } else {
+        Main.URLBar.RefreshStop.icon = 'close';
       }
     });
   }
