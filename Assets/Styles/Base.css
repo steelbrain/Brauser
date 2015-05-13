@@ -20,7 +20,7 @@ paper-tabs /deep/ div.scroll-button{
   height: calc(100% - 88px);
 }
 #Header-Omnibox{
-  margin: 2px;
+  margin: 6px 0;
   border: none;
   padding: 5px;
   border-radius: 4px;

@@ -24,11 +24,12 @@
         <paper-icon-button icon="close"></paper-icon-button>
       </div>
     </div>
-    <div flex layout horizontal>
-      <paper-icon-button icon="arrow-back"></paper-icon-button>
-      <paper-icon-button icon="arrow-forward"></paper-icon-button>
+    <div flex layout horizontal id="Header-URLBar">
+      <paper-icon-button disabled icon="arrow-back"></paper-icon-button>
+      <paper-icon-button disabled icon="arrow-forward"></paper-icon-button>
       <paper-icon-button icon="refresh"></paper-icon-button>
       <input id="Header-Omnibox" type="text" placeholder="Enter URL or Term to Search" flex />
+      <paper-icon-button icon="apps"></paper-icon-button>
     </div>
     <div id="Content">
 
@@ -41,6 +42,7 @@
       });
     </script>
     <script src="../Assets/JS/Main.js"></script>
+    <script src="../Assets/JS/URLBar.js"></script>
     <script src="../Assets/JS/TaskBar.js"></script>
     <script src="../Assets/JS/Tabs.js"></script>
     <script src="../Assets/JS/Tab.js"></script>

@@ -9,7 +9,13 @@ class Renderer{
 
     this.TaskBar = new TaskBar();
     this.Tabs = new Tabs();
+    this.URLBar = new URLBar();
 
+    this.Listen();
+    this.Tabs.CreateNew('https://www.google.co.uk', true);
+
+  }
+  Listen(){
     document.addEventListener('keydown', function(e){
       if(e.which === 82 && e.ctrlKey && e.altKey){ // CTRL + ALT + R
         location.reload();
@@ -23,7 +29,5 @@ class Renderer{
         }
       }
     });
-
-    this.Tabs.CreateNew('https://www.google.com.au', true);
   }
 }
